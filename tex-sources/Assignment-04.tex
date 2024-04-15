@@ -1,0 +1,361 @@
+\documentclass{article}
+
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usetikzlibrary{3d}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{braket}
+\usepackage{enumerate}
+\usepackage{paralist}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{makecell}
+\usepackage{listings}
+
+\newcommand{\tabitem}{\llap{}}
+\renewcommand{\cellalign}{cl}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{Habib University}
+\chead{\hmwkClass, \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+\definecolor{mGreen}{rgb}{0,0.6,0}
+\definecolor{mGray}{rgb}{0.5,0.5,0.5}
+\definecolor{mPurple}{rgb}{0.58,0,0.82}
+\definecolor{backgroundColour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{CStyle}{
+    backgroundcolor=\color{backgroundColour},
+    commentstyle=\color{mGreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{mGray},
+    stringstyle=\color{mPurple},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    language=C
+}
+
+\lstset{language=C++,
+                keywordstyle=\color{blue},
+                stringstyle=\color{red},
+                commentstyle=\color{green},
+                morecomment=[l][\color{magenta}]{\#},
+                breaklines=true,
+}
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+	\nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+	\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+	\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+	\stepcounter{#1}
+	\nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+	\ifnum#1>0
+	\setcounter{homeworkProblemCounter}{#1}
+	\fi
+	\section{Problem \arabic{homeworkProblemCounter}}
+	\setcounter{partCounter}{1}
+	\enterProblemHeader{homeworkProblemCounter}
+}{
+	\exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Assignment\ \#4}
+\newcommand{\hmwkDueDate}{April 26, 2024, 11.59pm}
+\newcommand{\hmwkClass}{CS 201 - Data Structures II}
+\newcommand{\hmwkClassInstructor}{Muhammad Mobeen Movania (L1),\\ Syeda Saleha Raza (L2),\\ Faisal Alvi (L3, L4),\\ Abdullah Zafar (L5).}
+\newcommand{\hmwkAuthorName}{\textbf{Student 1 Name, ID} \and \textbf{Student 2 Name, ID}}
+
+%
+% Title Page
+%
+
+\title{
+	\vspace{2in}
+	\textmd{\textbf{\hmwkClass:\\ \hmwkTitle}}\\
+	\normalsize\vspace{0.1in}\small{\hmwkClassInstructor}\\
+	\normalsize\vspace{0.1in}\small{Due\ on\ \hmwkDueDate}\\
+	\vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+	
+\maketitle
+	
+\pagebreak
+\section{Instructions}
+This assignment document consists of two problems.
+
+\begin{itemize} 
+	\item \underline{Problem 1} is a programming based question which requires implementation. It must be submitted by pushing all your code files to the Github repository. This problem is worth 40 points.
+	\item \underline{Problem 2} is a theoretical question which requires analysis. It should be completed and submitted within this document as a pdf on Canvas. This problem is worth 20 points.
+
+\end{itemize}
+
+\newpage
+\begin{homeworkProblem} (40 points) [\textbf{Creating a Ranked Retrieval System}] 
+
+In this assignment you will be implementing an inverted index on a corpus of resumes taken from \href{https://www.kaggle.com/datasets/snehaanbhawal/resume-dataset/data}{Resume Dataset - Kaggle} and creating a story based on the data.
+
+\subsection{1. Understanding the Data Format}
+
+The data, available on the canvas assignment page, is divided into two folders called “text” and “html”, containing text files and HTML files respectively. Each text file contains simplified/cleaned text \footnote{The original text has been pre-processed to remove uppercase, single characters, punctuation, non-alphabetic characters, stop words, and then lemmatized.} that corresponds to an HTML file of the same name containing the original resume text. You need to use the text files to create an inverted index and perform queries on it. The HTML files are given to help you explore the data better.
+
+\subsubsection{Required Tasks}
+
+None.
+
+\subsection{2. Create a Positional Index}
+
+Create a positional index of the following abstract format \footnote{The implementation-level format may differ, as required, from the abstract format. For example, a hash table may use just the terms as keys, and all other attributes (including Total Frequency) as values. However, the index saved as JSON should be in its abstract format.} using all the data from the “text” folder. Table 1 shows the abstract format of an entry and some of its values in the positional index.
+
+% Please add the following required packages to your document preamble:
+% \usepackage{graphicx}
+\begin{table}[htbp]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+Term, Total Frequency & [DocID, Frequency in Doc: [pos1, pos2, \ldots], weight=1 \ldots] \\ \hline
+\vdots & \vdots \\ \hline
+inspired, 16 & \makecell{[ \\ \tabitem ~~~~~~ 30, 1: [3036], 1 \\ \tabitem ~~~~~~ 51, 1: [1452], 1 \\ \tabitem ~~~~~~ 1440, 2: [2697, 5123], 1 \\ \tabitem ~~~~~~ \vdots \\]} \\ \hline
+\vdots & \vdots \\ \hline
+\end{tabular}
+\caption{Entry for the term “inspired”, which appears a total of 16 times in all documents combined. The Doc. ID corresponds to the number appended to the last underscore in the filename. A default weight of 1 is added to each document entry as a placeholder to be replaced with a weight when implementing ranked retrieval.}
+\end{table}
+
+A positional index allows proximity and phrase search of variable length. You will use the positional index to create a search story that incorporates both proximity and phrase search. In order to create the required index, you need to consider:
+
+\begin{enumerate}
+	\item \textit{Text Extraction:} The entire data needs to be tokenized over whitespace. Each token will be treated as a term. The terms will probably need to be collated in some form before being added to the inverted index.
+	\item \textit{Choice of Data Structure:} The two common choices are hash tables and tries. Deciding whether to use one or the other depends on the specific requirements of your application. First understand all the requirements of this assignment, and then do your own research before deciding on the appropriate data structure to use. You are free to use any data structure to implement the inverted index for the purposes of grading.
+\end{enumerate}
+
+\subsubsection{Required Tasks:}
+
+Create a class called \texttt{InvertedIndex} and write the functions \texttt{InvertedIndex, getSize} and \texttt{saveToJson} with the following specifications:
+
+\begin{lstlisting}
+    class InvertedIndex {
+        public:
+            InvertedIndex(std::string folderPath); //constructs an Inverted Index according to the given specifications.  
+            int getSize(); // returns the number of unique terms
+            void saveToJson(std::string fileName); //saves entire Index as a JSON file called <fileName>.json
+    };
+\end{lstlisting}
+A JSON file, available on the canvas assignment page, has been provided for comparison.
+
+\subsection{3. Add Boolean and Proximity Search Functionality}
+
+Two types of boolean queries and two types of proximity queries should be supported by the positional index. These are:
+
+\begin{enumerate}
+	\item $t_1$ AND $t_2$: postings that match both terms $t_1$ and $t_2$.
+	\item $t_1$ OR $t_2$: postings that match either terms $t_1$ or $t_2$.
+	\item $t_1$ BEFORE $t_2$: postings where term $t_1$ appears immediately before term $t_2$.
+	\item $t_1$ NEAR $t_2$ $n$: postings where the first letters of terms $t_1$ and $t_2$ appear within $n$ (character) positions of each other. E.g. $effective$ NEAR $skills$ $26$ matches the document containing ``effective problem solving skills" but $effective$ NEAR $skills$ $25$ does not.
+\end{enumerate}
+
+\subsubsection{Query Format}
+Queries will be given as strings, and can be represented recursively. A query can be:
+\begin{enumerate}
+    \item Standalone term:  ``\texttt{<$t$>}'', where ``\texttt{<$t$>}" represents the string representation of term $t$. E.g. ``$inspired$".
+    \item AND: ``(\texttt{<$t_1$> AND <$t_2$>})". E.g. ``($inspired \texttt{ AND } motivated$)".
+    \item OR: ``(\texttt{<$t_1$> OR <$t_2$>})". E.g. ``($inspired \texttt{ OR } motivated$)".
+    \item BEFORE: "(\texttt{<$t_1$> BEFORE <$t_2$>})". E.g. ``($computer \texttt{ BEFORE } science$)" 
+    \item NEAR: "\texttt{<$t_1$> NEAR <$t_2$> <$n$>}", where ``\texttt{<$n$>}" is the string representation of the number $n$. E.g. ``($leadership \texttt{ NEAR } teamwork \text{ } 20$)" 
+    \item COMPOUND AND: ``\texttt{<$q_1$> AND <$q_2$>}”, where $q_1$ and $q_2$ are queries. \\E.g.``(($inspired \texttt{ OR } motivated) \texttt{ AND } graduate$)".
+    \item COMPOUND OR: ``\texttt{<$q_1$> OR <$q_2$>}”. \\ 
+    E.g. ``($(leadership \texttt{ NEAR } teamwork \text{ } 20) \texttt{ OR } (leadership \texttt{ NEAR } collaboration \text{ } 20)$)".
+
+\end{enumerate}
+
+\subsubsection{Required Tasks}
+Write a struct, \texttt{Posting}, of your own specification except that it must contain a \texttt{docId} attribute as follows:
+
+\begin{lstlisting}
+    struct Posting {
+        std::string docId;
+        //add more attributes as required
+    }  
+\end{lstlisting}
+    
+Write a function, \texttt{retrieve}, within the \texttt{InvertedIndex} class with the following specification:
+
+\begin{lstlisting}
+    class InvertedIndex {
+        public:
+            std::vector<Posting> retrieve (std::string query) //takes a query string and returns a vector of postings matching the query.
+    };
+\end{lstlisting}
+
+\subsection{4. Add Ranked Retrieval Functionality}
+
+The positional index needs to support ranked retrieval, i.e. retrieved documents should be scored (weighted) and sorted in order of highest score to lowest score. The Term Frequency (TF) and Term Frequency-Inverse Document Frequency (TF-IDF) are two commonly used metrics to evaluate how important a term is, but they differ significantly in how they measure this importance. You are only required to implement the TF-IDF metric on your queries. You may decide to use a different metric, such as TF, in the next part of the assignment.
+
+\subsubsection{Required Tasks}
+Implement the TF-IDF metric within the \texttt{retrieve} function. You should add the tf-idf weight of each query term present in the document to compute the TF-IDF score for that document. Refer to \href{https://nlp.stanford.edu/IR-book/html/htmledition/term-frequency-and-weighting-1.html}{this link} for the definition of the TF-IDF score. 
+
+\begin{lstlisting}
+    class InvertedIndex {
+        public:
+            std::vector<Posting> retrieve (std::string query) //updated: takes a query string and returns a vector of postings matching the query sorted by score, from highest score to lowest score.
+    };
+\end{lstlisting}
+
+\vspace{0.5cm}
+
+\subsection{Grading Criteria}
+The rubric for this homework is as follows:
+\begin{itemize}
+\item 15 points: Section 2 - Create a Positional Index
+\item 15 points: Section 3 - Add Boolean and Proximity Search Functionality
+\item 10 points: Section 4 - Add Ranked Retrieval Functionality
+\end{itemize}
+ 
+Penalties
+\begin{itemize}
+\item (-5) Code compiles with warnings.
+\item (-5) GitHub repository does not follow appropriate structure. All the code files should be in the code folder and output files in the output folder.
+\end{itemize}
+
+\vspace{0.5cm}
+
+\textbf{Compilation Guidelines:} Before proceeding with submission, kindly verify that your code compiles utilizing the \textbf{C++17} standard.  
+
+
+\end{homeworkProblem}
+
+\newpage
+\begin{homeworkProblem}
+(20 points) [\textbf{Analysis: Create a Search Story}]
+
+Once you have implemented the required functionality of the positional index, you need to create your own search scenario. Think of the search scenario as a story that requires the following steps:
+
+\begin{itemize}
+	\item \textit{Explore the dataset:} Explore the dataset for categories or patterns using the search functionality you have implemented. Remember to search for compound phrases, not just standalone terms. HTML versions of resumes have been provided to help you explore the dataset further.
+	\item \textit{Identify an information need:} Once you have explored the dataset, identify a meaningful information need that you will try to accomplish using your inverted index. Remember that an ```information need' is the topic which the user desires to know more of, and is different from a query, which is what the user conveys to the computer in an attempt to communicate the information need"\footnote{\href{https://nlp.stanford.edu/IR-book/html/htmledition/an-example-information-retrieval-problem-1.html}{https://nlp.stanford.edu/IR-book/html/htmledition/an-example-information-retrieval-problem-1.html}}. E.g. You may want resumes of computer science graduates who know certain frameworks. 
+	\item \textit{Choose queries to communicate the information need:} Try out different queries, simple and compound, to retrieve documents to fulfill the intended information need. Distill your choice down to a few meaningful queries. 
+	\item \textit{Choose the scoring metric:}  Choose a scoring metric that will suit the data and information need. Each metric differs in how it measures the importance of terms; you may choose TF, TF-IDF, or come up with a new scoring metric.
+	\item \textit{Analyze Results:} Observe patterns in the retrieved documents. How effective is your search in terms of precision and recall? What shortcomings does your search have?
+\end{itemize}
+\subsubsection{Required Tasks}
+\begin{enumerate}
+\item Write a caption that succinctly captures your information need. The caption should be no more than a phrase or sentence. 
+\item Write 3 distinct queries that can be used in conjunction to retrieve documents. Each query, simple or compound, should be written in the format accepted by the retrieve function. 
+\item Justify, briefly, the scoring metric used, and define any new metrics if used.
+\item Analyze, briefly, the effectiveness of your search, commenting on the precision, recall and any other factors relevant to your search. 
+\end{enumerate}
+
+
+\end{homeworkProblem}
+\bigskip
+
+\vspace{0.5cm}
+
+Due date: April 26, 2024, 11.59pm
+
+\section{Acknowledgement}
+We thank Asad Tariq for all the help in designing this assessment.
+
+\end{document}
+
