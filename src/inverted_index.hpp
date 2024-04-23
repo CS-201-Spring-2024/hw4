@@ -1,5 +1,3 @@
-#include "json.hpp"
-
 struct Posting {
     std::string docId;
     // add more attributes or methods as required
