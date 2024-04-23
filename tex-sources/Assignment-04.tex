@@ -256,16 +256,13 @@ Two types of boolean queries and two types of proximity queries should be suppor
 \end{enumerate}
 
 \subsubsection{Query Format}
-Queries will be given as strings, and can be represented recursively. A query can be:
+Queries will be given as strings. A query can be:
 \begin{enumerate}
     \item Standalone term:  ``\texttt{<$t$>}'', where ``\texttt{<$t$>}" represents the string representation of term $t$. E.g. ``$inspired$".
     \item AND: ``(\texttt{<$t_1$> AND <$t_2$>})". E.g. ``($inspired \texttt{ AND } motivated$)".
     \item OR: ``(\texttt{<$t_1$> OR <$t_2$>})". E.g. ``($inspired \texttt{ OR } motivated$)".
     \item BEFORE: "(\texttt{<$t_1$> BEFORE <$t_2$>})". E.g. ``($computer \texttt{ BEFORE } science$)" 
     \item NEAR: "\texttt{<$t_1$> NEAR <$t_2$> <$n$>}", where ``\texttt{<$n$>}" is the string representation of the number $n$. E.g. ``($leadership \texttt{ NEAR } teamwork \text{ } 20$)" 
-    \item COMPOUND AND: ``\texttt{<$q_1$> AND <$q_2$>}”, where $q_1$ and $q_2$ are queries. \\E.g.``(($inspired \texttt{ OR } motivated) \texttt{ AND } graduate$)".
-    \item COMPOUND OR: ``\texttt{<$q_1$> OR <$q_2$>}”. \\ 
-    E.g. ``($(leadership \texttt{ NEAR } teamwork \text{ } 20) \texttt{ OR } (leadership \texttt{ NEAR } collaboration \text{ } 20)$)".
 
 \end{enumerate}
 
@@ -341,7 +338,7 @@ Once you have implemented the required functionality of the positional index, yo
 \subsubsection{Required Tasks}
 \begin{enumerate}
 \item Write a caption that succinctly captures your information need. The caption should be no more than a phrase or sentence. 
-\item Write 3 distinct queries that can be used in conjunction to retrieve documents. Each query, simple or compound, should be written in the format accepted by the retrieve function. 
+\item Write 3 distinct queries that can be used to retrieve documents matching your information need. Each query, simple or compound, should be written in the format accepted by the retrieve function. 
 \item Justify, briefly, the scoring metric used, and define any new metrics if used.
 \item Analyze, briefly, the effectiveness of your search, commenting on the precision, recall and any other factors relevant to your search. 
 \end{enumerate}
